@@ -2,6 +2,9 @@ import { getServerAuthSession } from "@/lib/auth";
 import { apiError, apiSuccess, getErrorDetails } from "@/lib/api";
 import { getDashboardKpis } from "@/lib/dashboard";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   const session = await getServerAuthSession();
 

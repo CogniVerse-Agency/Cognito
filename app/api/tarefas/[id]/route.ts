@@ -3,6 +3,9 @@ import { apiError, apiSuccess, getErrorDetails } from "@/lib/api";
 import { prisma } from "@/lib/prisma";
 import { tarefaUpdateSchema } from "@/lib/schemas/tarefa";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 export async function PATCH(
   request: Request,
   { params }: { params: { id: string } }

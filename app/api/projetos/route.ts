@@ -4,6 +4,9 @@ import { apiError, apiSuccess, getErrorDetails } from "@/lib/api";
 import { prisma } from "@/lib/prisma";
 import { projetoQuerySchema, projetoSchema } from "@/lib/schemas/projeto";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 export async function GET(request: Request) {
   const session = await getServerAuthSession();
 

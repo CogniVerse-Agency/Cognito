@@ -3,6 +3,9 @@ import { apiError, apiSuccess, getErrorDetails } from "@/lib/api";
 import { prisma } from "@/lib/prisma";
 import { clienteSchema } from "@/lib/schemas/cliente";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 export async function GET(
   _request: Request,
   { params }: { params: { id: string } }

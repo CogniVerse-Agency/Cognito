@@ -4,6 +4,9 @@ import { apiError, apiSuccess, getErrorDetails } from "@/lib/api";
 import { prisma } from "@/lib/prisma";
 import { tarefaQuerySchema } from "@/lib/schemas/tarefa";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 export async function GET(request: Request) {
   const session = await getServerAuthSession();
 
