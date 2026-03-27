@@ -1,0 +1,181 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role     @default(MEMBER)
+  avatar    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  tarefas  Tarefa[]
+  projetos Projeto[] @relation("ProjetoResponsavel")
+}
+
+enum Role {
+  ADMIN
+  MEMBER
+  VIEWER
+}
+
+model Cliente {
+  id            String        @id @default(cuid())
+  nome          String
+  empresa       String?
+  email         String?
+  telefone      String?
+  status        ClienteStatus @default(LEAD)
+  tipoServico   TipoServico?
+  canalOrigem   String?
+  valorContrato Float?
+  nps           NPS?
+  notas         String?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  contratos Contrato[]
+  projetos  Projeto[]
+
+  @@index([status])
+  @@index([tipoServico])
+  @@index([nome])
+}
+
+enum ClienteStatus {
+  LEAD
+  PROSPECT
+  ATIVO
+  PAUSADO
+  ENCERRADO
+}
+
+enum TipoServico {
+  HIGH_TOUCH
+  PRODUCTIZED
+  ATIVO_DIGITAL
+  CONSULTORIA
+}
+
+enum NPS {
+  PROMOTOR
+  NEUTRO
+  DETRATOR
+}
+
+model Contrato {
+  id            String         @id @default(cuid())
+  titulo        String
+  clienteId     String
+  cliente       Cliente        @relation(fields: [clienteId], references: [id], onDelete: Cascade)
+  status        ContratoStatus @default(RASCUNHO)
+  tipo          TipoServico
+  valor         Float
+  recorrente    Boolean        @default(false)
+  periodicidade String?
+  dataInicio    DateTime
+  dataFim       DateTime?
+  descricao     String?
+  arquivo       String?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+
+  projetos Projeto[]
+
+  @@index([clienteId])
+  @@index([status])
+  @@index([tipo])
+}
+
+enum ContratoStatus {
+  RASCUNHO
+  ENVIADO
+  ASSINADO
+  ATIVO
+  ENCERRADO
+  CANCELADO
+}
+
+model Projeto {
+  id            String        @id @default(cuid())
+  nome          String
+  descricao     String?
+  clienteId     String
+  cliente       Cliente       @relation(fields: [clienteId], references: [id], onDelete: Cascade)
+  contratoId    String?
+  contrato      Contrato?     @relation(fields: [contratoId], references: [id])
+  responsavelId String?
+  responsavel   User?         @relation("ProjetoResponsavel", fields: [responsavelId], references: [id])
+  status        ProjetoStatus @default(PLANEJAMENTO)
+  prioridade    Prioridade    @default(MEDIA)
+  progresso     Int           @default(0)
+  dataInicio    DateTime?
+  deadline      DateTime?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  tarefas Tarefa[]
+
+  @@index([clienteId])
+  @@index([contratoId])
+  @@index([responsavelId])
+  @@index([status])
+  @@index([prioridade])
+}
+
+enum ProjetoStatus {
+  PLANEJAMENTO
+  EM_ANDAMENTO
+  EM_REVISAO
+  CONCLUIDO
+  PAUSADO
+  CANCELADO
+}
+
+enum Prioridade {
+  BAIXA
+  MEDIA
+  ALTA
+  CRITICA
+}
+
+model Tarefa {
+  id            String       @id @default(cuid())
+  titulo        String
+  descricao     String?
+  projetoId     String
+  projeto       Projeto      @relation(fields: [projetoId], references: [id], onDelete: Cascade)
+  responsavelId String?
+  responsavel   User?        @relation(fields: [responsavelId], references: [id])
+  status        TarefaStatus @default(BACKLOG)
+  prioridade    Prioridade   @default(MEDIA)
+  deadline      DateTime?
+  concluida     Boolean      @default(false)
+  concluidaEm   DateTime?
+  ordem         Int          @default(0)
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  @@index([projetoId])
+  @@index([responsavelId])
+  @@index([status])
+  @@index([prioridade])
+  @@index([concluida])
+}
+
+enum TarefaStatus {
+  BACKLOG
+  A_FAZER
+  EM_ANDAMENTO
+  EM_REVISAO
+  CONCLUIDO
+}
