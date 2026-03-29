@@ -25,20 +25,20 @@ export function TarefaFilters({
     <div className="space-y-4">
       <div className="flex gap-2">
         <Link
-          className={`rounded-xl px-4 py-2 text-sm font-medium ${
+          className={`rounded-pill border px-4 py-2 text-sm font-medium transition-colors ${
             scope === "mine"
-              ? "bg-brand-purple/15 text-white shadow-glow"
-              : "bg-white/5 text-text-muted hover:bg-white/10 hover:text-text-primary"
+              ? "border-accent bg-accent/10 text-ink-primary"
+              : "border-border bg-bg-surface text-ink-secondary hover:border-border-hover hover:text-ink-primary"
           }`}
           href="/tarefas?scope=mine"
         >
           Minhas tarefas
         </Link>
         <Link
-          className={`rounded-xl px-4 py-2 text-sm font-medium ${
+          className={`rounded-pill border px-4 py-2 text-sm font-medium transition-colors ${
             scope === "all"
-              ? "bg-brand-purple/15 text-white shadow-glow"
-              : "bg-white/5 text-text-muted hover:bg-white/10 hover:text-text-primary"
+              ? "border-accent bg-accent/10 text-ink-primary"
+              : "border-border bg-bg-surface text-ink-secondary hover:border-border-hover hover:text-ink-primary"
           }`}
           href="/tarefas?scope=all"
         >
@@ -46,7 +46,7 @@ export function TarefaFilters({
         </Link>
       </div>
 
-      <form className="grid gap-4 rounded-xl border border-border bg-white/5 p-4 md:grid-cols-[1fr_1fr_1fr_1fr_auto_auto]">
+      <form className="grid gap-4 rounded-card border border-border bg-bg-surface p-4 md:grid-cols-[1fr_1fr_1fr_1fr_auto_auto]">
         <input name="scope" type="hidden" value={scope} />
         <Select defaultValue={status ?? ""} label="Status" name="status">
           <option value="">Todos</option>
@@ -85,7 +85,7 @@ export function TarefaFilters({
           </Button>
         </div>
         <div className="flex items-end">
-          <Link className="inline-flex w-full items-center justify-center rounded-xl px-4 py-2.5 text-sm font-medium text-text-muted hover:bg-white/5 hover:text-text-primary" href={`/tarefas?scope=${scope}`}>
+          <Link className="inline-flex w-full items-center justify-center rounded-pill border border-border px-4 py-2.5 text-sm font-medium text-ink-secondary transition-colors hover:border-border-hover hover:text-ink-primary" href={`/tarefas?scope=${scope}`}>
             Limpar
           </Link>
         </div>

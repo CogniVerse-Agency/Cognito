@@ -105,12 +105,12 @@ export function ClienteForm({ cliente }: ClienteFormProps) {
         <div className="grid gap-4 md:grid-cols-2">
           <div className="space-y-2">
             <Input defaultValue={cliente?.nome ?? ""} label="Nome*" name="nome" placeholder="Nome do contato" />
-            {errors.nome ? <p className="text-sm text-red-300">{errors.nome}</p> : null}
+            {errors.nome ? <p className="text-xs text-status-error">{errors.nome}</p> : null}
           </div>
           <Input defaultValue={cliente?.empresa ?? ""} label="Empresa" name="empresa" placeholder="Nome da empresa" />
           <div className="space-y-2">
             <Input defaultValue={cliente?.email ?? ""} label="Email" name="email" placeholder="email@empresa.com" type="email" />
-            {errors.email ? <p className="text-sm text-red-300">{errors.email}</p> : null}
+            {errors.email ? <p className="text-xs text-status-error">{errors.email}</p> : null}
           </div>
           <Input defaultValue={cliente?.telefone ?? ""} label="Telefone" name="telefone" placeholder="+55 11 99999-9999" />
           <div className="space-y-2">
@@ -121,7 +121,7 @@ export function ClienteForm({ cliente }: ClienteFormProps) {
               <option value="PAUSADO">Pausado</option>
               <option value="ENCERRADO">Encerrado</option>
             </Select>
-            {errors.status ? <p className="text-sm text-red-300">{errors.status}</p> : null}
+            {errors.status ? <p className="text-xs text-status-error">{errors.status}</p> : null}
           </div>
           <Select defaultValue={cliente?.tipoServico ?? ""} label="Tipo de Servico" name="tipoServico">
             <option value="">Selecione</option>
@@ -140,8 +140,8 @@ export function ClienteForm({ cliente }: ClienteFormProps) {
           </Select>
         </div>
 
-        <label className="block space-y-2">
-          <span className="text-sm font-medium text-text-primary">Notas</span>
+        <label className="block space-y-1.5">
+          <span className="text-sm font-medium text-ink-primary">Notas</span>
           <textarea
             className="input-base min-h-[140px] resize-y"
             defaultValue={cliente?.notas ?? ""}

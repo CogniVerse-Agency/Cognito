@@ -25,30 +25,30 @@ export function Table<T>({
   return (
     <Card className="overflow-hidden">
       <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-white/5">
-          <thead className="bg-white/[0.03]">
+        <table className="min-w-full">
+          <thead className="bg-bg-surface2">
             <tr>
               {columns.map((column) => (
                 <th
                   key={String(column.key)}
-                  className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.18em] text-text-muted"
+                  className="px-4 py-3 text-left font-heading text-xs font-bold uppercase tracking-[0.18em] text-ink-tertiary"
                 >
                   {column.header}
                 </th>
               ))}
             </tr>
           </thead>
-          <tbody className="divide-y divide-white/5">
+          <tbody>
             {data.length > 0 ? (
               data.map((item) => (
                 <tr
                   key={getRowKey(item)}
-                  className={cn("transition-colors hover:bg-white/[0.03]")}
+                  className={cn("border-b border-border transition-colors hover:bg-bg-surface2")}
                 >
                   {columns.map((column) => (
                     <td
                       key={String(column.key)}
-                      className={cn("px-4 py-4 text-sm text-text-primary", column.className)}
+                      className={cn("px-4 py-4 text-sm text-ink-secondary", column.className)}
                     >
                       {column.render
                         ? column.render(item)
@@ -61,7 +61,7 @@ export function Table<T>({
               <tr>
                 <td
                   colSpan={columns.length}
-                  className="px-4 py-12 text-center text-sm text-text-muted"
+                  className="px-4 py-12 text-center text-sm text-ink-secondary"
                 >
                   {emptyMessage}
                 </td>

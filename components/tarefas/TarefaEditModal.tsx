@@ -86,18 +86,18 @@ export function TarefaEditModal({
 
   return (
     <div className="fixed inset-0 z-[110] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm">
-      <div className="w-full max-w-2xl rounded-2xl border border-border bg-bg-surface p-6 shadow-2xl">
+      <div className="w-full max-w-2xl rounded-card border border-border bg-bg-surface p-6 shadow-2xl">
         <div className="mb-6 flex items-start justify-between gap-4">
           <div>
-            <p className="text-xs uppercase tracking-[0.18em] text-text-muted">
+            <p className="font-heading text-xs font-bold uppercase tracking-[0.18em] text-ink-tertiary">
               {currentTask.projeto.nome}
             </p>
-            <h2 className="mt-2 text-2xl font-semibold text-text-primary">
+            <h2 className="mt-2 font-heading text-2xl font-bold tracking-tight text-ink-primary">
               Editar Tarefa
             </h2>
           </div>
           <button
-            className="rounded-xl border border-border bg-white/5 p-2 text-text-muted hover:text-text-primary"
+            className="rounded-input border border-border bg-bg-surface2 p-2 text-ink-secondary transition-colors hover:border-border-hover hover:text-ink-primary"
             onClick={onClose}
             type="button"
           >
@@ -107,8 +107,8 @@ export function TarefaEditModal({
 
         <form className="space-y-5" onSubmit={handleSubmit}>
           <Input defaultValue={currentTask.titulo} label="Titulo" name="titulo" />
-          <label className="block space-y-2">
-            <span className="text-sm font-medium text-text-primary">Descricao</span>
+          <label className="block space-y-1.5">
+            <span className="text-sm font-medium text-ink-primary">Descricao</span>
             <textarea
               className="input-base min-h-[120px] resize-y"
               defaultValue={currentTask.descricao ?? ""}
@@ -146,8 +146,8 @@ export function TarefaEditModal({
               type="date"
             />
           </div>
-          <label className="flex items-center gap-3 rounded-xl border border-border bg-bg-surface2 px-4 py-3 text-sm text-text-primary">
-            <input defaultChecked={currentTask.concluida} name="concluida" type="checkbox" />
+          <label className="flex items-center gap-3 rounded-input border border-border bg-bg-surface2 px-4 py-3 text-sm text-ink-primary">
+            <input className="h-4 w-4 rounded border-border bg-bg-surface2 text-accent focus:border-border-focus focus:ring-0" defaultChecked={currentTask.concluida} name="concluida" type="checkbox" />
             Marcar como concluida
           </label>
           <div className="flex gap-3">

@@ -10,7 +10,7 @@ interface ContratoFiltersProps {
 
 export function ContratoFilters({ status, tipo, recorrente }: ContratoFiltersProps) {
   return (
-    <form className="grid gap-4 rounded-xl border border-border bg-white/5 p-4 md:grid-cols-[1fr_1fr_1fr_auto_auto]">
+    <form className="grid gap-4 rounded-card border border-border bg-bg-surface p-4 md:grid-cols-[1fr_1fr_1fr_auto_auto]">
       <Select defaultValue={status ?? ""} label="Status" name="status">
         <option value="">Todos</option>
         <option value="RASCUNHO">Rascunho</option>
@@ -38,7 +38,7 @@ export function ContratoFilters({ status, tipo, recorrente }: ContratoFiltersPro
         </Button>
       </div>
       <div className="flex items-end">
-        <Link className="inline-flex w-full items-center justify-center rounded-xl px-4 py-2.5 text-sm font-medium text-text-muted hover:bg-white/5 hover:text-text-primary" href="/contratos">
+        <Link className="inline-flex w-full items-center justify-center rounded-pill border border-border px-4 py-2.5 text-sm font-medium text-ink-secondary transition-colors hover:border-border-hover hover:text-ink-primary" href="/contratos">
           Limpar
         </Link>
       </div>

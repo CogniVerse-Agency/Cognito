@@ -158,8 +158,8 @@ export function ProjetoForm({
           />
         </div>
 
-        <label className="block space-y-2">
-          <span className="text-sm font-medium text-text-primary">Descricao</span>
+        <label className="block space-y-1.5">
+          <span className="text-sm font-medium text-ink-primary">Descricao</span>
           <textarea
             className="input-base min-h-[140px] resize-y"
             defaultValue={projeto?.descricao ?? ""}

@@ -18,8 +18,8 @@ export default async function DashboardPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-semibold">Dashboard</h1>
-        <p className="mt-2 text-sm text-text-muted">
+        <h1 className="font-heading text-3xl font-bold tracking-tight text-ink-primary">Dashboard</h1>
+        <p className="mt-2 text-sm text-ink-secondary">
           Visao geral operacional da CogniVerse com dados em tempo real.
         </p>
       </div>

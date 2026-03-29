@@ -13,8 +13,8 @@ export default async function NovoContratoPage({
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-semibold text-text-primary">Novo Contrato</h1>
-        <p className="mt-2 text-sm text-text-muted">
+        <h1 className="font-heading text-3xl font-bold tracking-tight text-ink-primary">Novo Contrato</h1>
+        <p className="mt-2 text-sm text-ink-secondary">
           Crie um novo contrato vinculado a um cliente da operacao.
         </p>
       </div>

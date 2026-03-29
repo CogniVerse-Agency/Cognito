@@ -1,13 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { getServerAuthSession } from "@/lib/auth";
 import { Providers } from "@/app/providers";
 import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter"
-});
 
 export const metadata: Metadata = {
   title: "CogniVerse ERP",
@@ -23,7 +17,7 @@ export default async function RootLayout({
 
   return (
     <html lang="pt-BR">
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className="font-body antialiased">
         <Providers session={session}>{children}</Providers>
       </body>
     </html>

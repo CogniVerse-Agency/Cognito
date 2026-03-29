@@ -28,18 +28,24 @@ export function ContratoDetail({ contrato }: { contrato: ContratoDetalhe }) {
 
       <Card className="space-y-4 p-6">
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-text-primary">Projetos Vinculados</h2>
-          <Link className="text-sm font-medium text-brand-cyan" href={`/projetos/novo?clienteId=${contrato.clienteId}&contratoId=${contrato.id}`}>
+          <h2 className="font-heading text-lg font-bold tracking-tight text-ink-primary">Projetos Vinculados</h2>
+          <Link
+            className="text-sm font-medium text-accent transition-colors hover:text-accent-dim"
+            href={`/projetos/novo?clienteId=${contrato.clienteId}&contratoId=${contrato.id}`}
+          >
             Novo Projeto
           </Link>
         </div>
         {contrato.projetos.length ? (
           contrato.projetos.map((projeto) => (
-            <div key={projeto.id} className="rounded-xl border border-white/5 bg-white/[0.03] p-4">
+            <div
+              key={projeto.id}
+              className="rounded-card border border-border bg-bg-surface2 p-4 transition-colors hover:border-accent-border hover:bg-accent-muted"
+            >
               <div className="flex items-center justify-between gap-3">
                 <div>
-                  <p className="font-medium text-text-primary">{projeto.nome}</p>
-                  <p className="mt-1 text-sm text-text-muted">{projeto.progresso}% de progresso</p>
+                  <p className="font-medium text-ink-primary">{projeto.nome}</p>
+                  <p className="mt-1 text-sm text-ink-secondary">{projeto.progresso}% de progresso</p>
                 </div>
                 <div className="flex items-center gap-2">
                   <Badge label={projeto.prioridade} />
@@ -49,7 +55,7 @@ export function ContratoDetail({ contrato }: { contrato: ContratoDetalhe }) {
             </div>
           ))
         ) : (
-          <p className="text-sm text-text-muted">Nenhum projeto vinculado a este contrato ainda.</p>
+          <p className="text-sm text-ink-secondary">Nenhum projeto vinculado a este contrato ainda.</p>
         )}
       </Card>
     </div>
@@ -58,9 +64,9 @@ export function ContratoDetail({ contrato }: { contrato: ContratoDetalhe }) {
 
 function Field({ label, value }: { label: string; value: React.ReactNode }) {
   return (
-    <div className="rounded-xl border border-white/5 bg-white/[0.03] p-4">
-      <p className="text-xs uppercase tracking-[0.18em] text-text-muted">{label}</p>
-      <div className="mt-2 text-sm text-text-primary">{value}</div>
+    <div className="rounded-card border border-border bg-bg-surface2 p-4">
+      <p className="font-heading text-xs font-bold uppercase tracking-[0.18em] text-ink-tertiary">{label}</p>
+      <div className="mt-2 text-sm text-ink-primary">{value}</div>
     </div>
   );
 }

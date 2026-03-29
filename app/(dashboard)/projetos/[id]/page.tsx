@@ -38,25 +38,25 @@ export default async function ProjetoDetalhePage({
       <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
         <div className="space-y-3">
           <div className="flex flex-wrap items-center gap-3">
-            <h1 className="text-3xl font-semibold text-text-primary">{projeto.nome}</h1>
+            <h1 className="font-heading text-3xl font-bold tracking-tight text-ink-primary">{projeto.nome}</h1>
             <Badge label={projeto.status} />
             <Badge label={projeto.prioridade} />
           </div>
-          <p className="text-sm text-text-muted">
+          <p className="text-sm text-ink-secondary">
             {projeto.cliente.empresa ?? projeto.cliente.nome}
           </p>
         </div>
 
         {editing ? (
           <Link
-            className="inline-flex items-center justify-center rounded-xl border border-border bg-white/5 px-4 py-2.5 text-sm font-semibold text-text-primary hover:bg-white/10"
+            className="inline-flex items-center justify-center rounded-pill border border-border bg-transparent px-6 py-2.5 font-heading text-sm font-semibold text-ink-secondary transition-all duration-200 hover:border-border-hover hover:text-ink-primary"
             href={`/projetos/${projeto.id}`}
           >
             Cancelar Edicao
           </Link>
         ) : (
           <Link
-            className="inline-flex items-center justify-center rounded-xl border border-border bg-white/5 px-4 py-2.5 text-sm font-semibold text-text-primary hover:bg-white/10"
+            className="inline-flex items-center justify-center rounded-pill border border-border bg-transparent px-6 py-2.5 font-heading text-sm font-semibold text-ink-secondary transition-all duration-200 hover:border-border-hover hover:text-ink-primary"
             href={`/projetos/${projeto.id}?edit=1`}
           >
             Editar
@@ -96,8 +96,8 @@ export default async function ProjetoDetalhePage({
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <h2 className="text-xl font-semibold text-text-primary">Mini Kanban de Tarefas</h2>
-                <p className="text-sm text-text-muted">
+                <h2 className="font-heading text-xl font-bold tracking-tight text-ink-primary">Mini Kanban de Tarefas</h2>
+                <p className="text-sm text-ink-secondary">
                   Base inicial das tarefas do projeto. O CRUD completo entra na etapa seguinte.
                 </p>
               </div>
@@ -107,16 +107,16 @@ export default async function ProjetoDetalhePage({
                 const tarefas = projeto.tarefas.filter((tarefa) => tarefa.status === column.id);
 
                 return (
-                  <div key={column.id} className="rounded-xl border border-border bg-white/5 p-4">
+                  <div key={column.id} className="rounded-card border border-border bg-bg-surface p-4">
                     <div className="mb-4 flex items-center justify-between">
-                      <h3 className="font-semibold text-text-primary">{column.title}</h3>
-                      <span className="text-xs text-text-muted">{tarefas.length}</span>
+                      <h3 className="font-heading text-sm font-bold uppercase tracking-[0.18em] text-ink-primary">{column.title}</h3>
+                      <span className="font-heading text-xs font-bold text-ink-tertiary">{tarefas.length}</span>
                     </div>
                     <div className="space-y-3">
                       {tarefas.length ? (
                         tarefas.map((tarefa) => <TarefaCard key={tarefa.id} tarefa={tarefa} />)
                       ) : (
-                        <div className="rounded-xl border border-dashed border-white/10 px-3 py-6 text-center text-sm text-text-muted">
+                        <div className="rounded-card border border-dashed border-border px-3 py-6 text-center text-sm text-ink-secondary">
                           Sem tarefas nesta coluna.
                         </div>
                       )}
@@ -134,9 +134,9 @@ export default async function ProjetoDetalhePage({
 
 function Field({ label, value }: { label: string; value: React.ReactNode }) {
   return (
-    <div className="rounded-xl border border-white/5 bg-white/[0.03] p-4">
-      <p className="text-xs uppercase tracking-[0.18em] text-text-muted">{label}</p>
-      <div className="mt-2 text-sm text-text-primary">{value}</div>
+    <div className="rounded-card border border-border bg-bg-surface2 p-4">
+      <p className="font-heading text-xs font-bold uppercase tracking-[0.18em] text-ink-tertiary">{label}</p>
+      <div className="mt-2 text-sm text-ink-primary">{value}</div>
     </div>
   );
 }

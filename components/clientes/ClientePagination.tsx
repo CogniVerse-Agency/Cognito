@@ -29,15 +29,15 @@ export function ClientePagination({
 }: ClientePaginationProps) {
   return (
     <div className="flex items-center justify-between gap-4">
-      <p className="text-sm text-text-muted">
+      <p className="text-sm text-ink-secondary">
         Pagina {page} de {totalPages}
       </p>
       <div className="flex gap-3">
         <span
-          className={`inline-flex items-center justify-center rounded-xl border px-4 py-2.5 text-sm font-semibold ${
+          className={`inline-flex items-center justify-center rounded-pill border px-4 py-2.5 font-heading text-sm font-semibold ${
             page <= 1
-              ? "cursor-not-allowed border-border bg-white/5 text-text-muted/50"
-              : "border-border bg-white/5 text-text-primary hover:bg-white/10"
+              ? "cursor-not-allowed border-border bg-bg-surface text-ink-tertiary"
+              : "border-border bg-bg-surface text-ink-primary transition-colors hover:border-border-hover"
           }`}
         >
           {page > 1 ? (
@@ -47,10 +47,10 @@ export function ClientePagination({
           )}
         </span>
         <span
-          className={`inline-flex items-center justify-center rounded-xl border px-4 py-2.5 text-sm font-semibold ${
+          className={`inline-flex items-center justify-center rounded-pill border px-4 py-2.5 font-heading text-sm font-semibold ${
             page >= totalPages
-              ? "cursor-not-allowed border-border bg-white/5 text-text-muted/50"
-              : "border-border bg-white/5 text-text-primary hover:bg-white/10"
+              ? "cursor-not-allowed border-border bg-bg-surface text-ink-tertiary"
+              : "border-border bg-bg-surface text-ink-primary transition-colors hover:border-border-hover"
           }`}
         >
           {page < totalPages ? (

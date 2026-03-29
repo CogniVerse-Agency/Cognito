@@ -34,10 +34,10 @@ export function ClienteTabs({ cliente }: { cliente: ClienteDetalhe }) {
         {tabs.map((tab) => (
           <button
             key={tab.key}
-            className={`rounded-xl px-4 py-2 text-sm font-medium transition ${
+            className={`rounded-pill border px-4 py-2 text-sm font-medium transition-colors ${
               activeTab === tab.key
-                ? "bg-brand-purple/15 text-white shadow-glow"
-                : "bg-white/5 text-text-muted hover:bg-white/10 hover:text-text-primary"
+                ? "border-accent bg-accent/10 text-ink-primary"
+                : "border-border bg-bg-surface text-ink-secondary hover:border-border-hover hover:text-ink-primary"
             }`}
             onClick={() => setActiveTab(tab.key)}
             type="button"
@@ -78,18 +78,24 @@ export function ClienteTabs({ cliente }: { cliente: ClienteDetalhe }) {
       {activeTab === "contratos" ? (
         <Card className="space-y-4 p-6">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold text-text-primary">Contratos</h2>
-            <Link className="text-sm font-medium text-brand-cyan" href={`/contratos/novo?clienteId=${cliente.id}`}>
+            <h2 className="font-heading text-lg font-bold tracking-tight text-ink-primary">Contratos</h2>
+            <Link
+              className="text-sm font-medium text-accent transition-colors hover:text-accent-dim"
+              href={`/contratos/novo?clienteId=${cliente.id}`}
+            >
               Novo Contrato
             </Link>
           </div>
           {cliente.contratos.length ? (
             cliente.contratos.map((contrato) => (
-              <div key={contrato.id} className="rounded-xl border border-white/5 bg-white/[0.03] p-4">
+              <div
+                key={contrato.id}
+                className="rounded-card border border-border bg-bg-surface2 p-4 transition-colors hover:border-accent-border hover:bg-accent-muted"
+              >
                 <div className="flex items-center justify-between gap-3">
                   <div>
-                    <p className="font-medium text-text-primary">{contrato.titulo}</p>
-                    <p className="mt-1 text-sm text-text-muted">
+                    <p className="font-medium text-ink-primary">{contrato.titulo}</p>
+                    <p className="mt-1 text-sm text-ink-secondary">
                       {formatCurrency(contrato.valor)} · {contrato.tipo.replaceAll("_", " ")}
                     </p>
                   </div>
@@ -98,7 +104,7 @@ export function ClienteTabs({ cliente }: { cliente: ClienteDetalhe }) {
               </div>
             ))
           ) : (
-            <p className="text-sm text-text-muted">Nenhum contrato vinculado ainda.</p>
+            <p className="text-sm text-ink-secondary">Nenhum contrato vinculado ainda.</p>
           )}
         </Card>
       ) : null}
@@ -106,18 +112,24 @@ export function ClienteTabs({ cliente }: { cliente: ClienteDetalhe }) {
       {activeTab === "projetos" ? (
         <Card className="space-y-4 p-6">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold text-text-primary">Projetos</h2>
-            <Link className="text-sm font-medium text-brand-cyan" href={`/projetos/novo?clienteId=${cliente.id}`}>
+            <h2 className="font-heading text-lg font-bold tracking-tight text-ink-primary">Projetos</h2>
+            <Link
+              className="text-sm font-medium text-accent transition-colors hover:text-accent-dim"
+              href={`/projetos/novo?clienteId=${cliente.id}`}
+            >
               Novo Projeto
             </Link>
           </div>
           {cliente.projetos.length ? (
             cliente.projetos.map((projeto) => (
-              <div key={projeto.id} className="rounded-xl border border-white/5 bg-white/[0.03] p-4">
+              <div
+                key={projeto.id}
+                className="rounded-card border border-border bg-bg-surface2 p-4 transition-colors hover:border-accent-border hover:bg-accent-muted"
+              >
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <div>
-                    <p className="font-medium text-text-primary">{projeto.nome}</p>
-                    <p className="mt-1 text-sm text-text-muted">
+                    <p className="font-medium text-ink-primary">{projeto.nome}</p>
+                    <p className="mt-1 text-sm text-ink-secondary">
                       {projeto.responsavel?.name ?? "Sem responsavel"} · {projeto.progresso}%
                     </p>
                   </div>
@@ -129,16 +141,17 @@ export function ClienteTabs({ cliente }: { cliente: ClienteDetalhe }) {
               </div>
             ))
           ) : (
-            <p className="text-sm text-text-muted">Nenhum projeto vinculado ainda.</p>
+            <p className="text-sm text-ink-secondary">Nenhum projeto vinculado ainda.</p>
           )}
         </Card>
       ) : null}
 
       {activeTab === "historico" ? (
         <Card className="space-y-4 p-6">
-          <h2 className="text-lg font-semibold text-text-primary">Historico</h2>
-          <div className="rounded-xl border border-white/5 bg-white/[0.03] p-4 text-sm text-text-muted">
-            Cliente criado em {formatDate(cliente.createdAt)} e atualizado pela ultima vez em {formatDate(cliente.updatedAt)}.
+          <h2 className="font-heading text-lg font-bold tracking-tight text-ink-primary">Historico</h2>
+          <div className="rounded-card border border-border bg-bg-surface2 p-4 text-sm text-ink-secondary">
+            Cliente criado em {formatDate(cliente.createdAt)} e atualizado pela ultima vez em{" "}
+            {formatDate(cliente.updatedAt)}.
           </div>
         </Card>
       ) : null}
@@ -148,9 +161,9 @@ export function ClienteTabs({ cliente }: { cliente: ClienteDetalhe }) {
 
 function Field({ label, value }: { label: string; value: ReactNode }) {
   return (
-    <div className="rounded-xl border border-white/5 bg-white/[0.03] p-4">
-      <p className="text-xs uppercase tracking-[0.18em] text-text-muted">{label}</p>
-      <div className="mt-2 text-sm text-text-primary">{value}</div>
+    <div className="rounded-card border border-border bg-bg-surface2 p-4">
+      <p className="font-heading text-xs font-bold uppercase tracking-[0.18em] text-ink-tertiary">{label}</p>
+      <div className="mt-2 text-sm text-ink-primary">{value}</div>
     </div>
   );
 }

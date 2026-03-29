@@ -70,7 +70,7 @@ export function LoginForm() {
       />
 
       {error ? (
-        <div className="rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-200">
+        <div className="rounded-input border border-status-error/20 bg-status-error/10 px-4 py-3 text-sm text-status-error">
           {error}
         </div>
       ) : null}

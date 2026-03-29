@@ -24,8 +24,8 @@ export default async function TarefasPage({
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-semibold text-text-primary">Tarefas</h1>
-        <p className="mt-2 text-sm text-text-muted">
+        <h1 className="font-heading text-3xl font-bold tracking-tight text-ink-primary">Tarefas</h1>
+        <p className="mt-2 text-sm text-ink-secondary">
           Visao global das tarefas com filtros, conclusao inline e edicao rapida.
         </p>
       </div>

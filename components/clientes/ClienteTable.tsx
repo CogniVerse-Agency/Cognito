@@ -16,7 +16,7 @@ export function ClienteTable({ clientes }: ClienteTableProps) {
           key: "nome",
           header: "Nome",
           render: (item) => (
-            <Link className="font-medium text-text-primary hover:text-brand-cyan" href={`/clientes/${item.id}`}>
+            <Link className="font-medium text-ink-primary transition-colors hover:text-accent" href={`/clientes/${item.id}`}>
               {item.nome}
             </Link>
           )
@@ -49,10 +49,10 @@ export function ClienteTable({ clientes }: ClienteTableProps) {
           header: "Acoes",
           render: (item) => (
             <div className="flex gap-3">
-              <Link className="text-brand-cyan hover:text-brand-purpleLight" href={`/clientes/${item.id}`}>
+              <Link className="font-medium text-accent transition-colors hover:text-accent-dim" href={`/clientes/${item.id}`}>
                 Abrir
               </Link>
-              <Link className="text-text-muted hover:text-text-primary" href={`/clientes/${item.id}?edit=1`}>
+              <Link className="text-ink-secondary transition-colors hover:text-ink-primary" href={`/clientes/${item.id}?edit=1`}>
                 Editar
               </Link>
             </div>

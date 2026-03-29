@@ -15,8 +15,8 @@ export default async function NovoProjetoPage({
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-semibold text-text-primary">Novo Projeto</h1>
-        <p className="mt-2 text-sm text-text-muted">
+        <h1 className="font-heading text-3xl font-bold tracking-tight text-ink-primary">Novo Projeto</h1>
+        <p className="mt-2 text-sm text-ink-secondary">
           Relacione cliente, contrato e responsavel para iniciar um novo projeto.
         </p>
       </div>

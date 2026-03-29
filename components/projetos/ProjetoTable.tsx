@@ -17,7 +17,7 @@ export function ProjetoTable({ projetos }: { projetos: ProjetoListItem[] }) {
           key: "nome",
           header: "Nome",
           render: (item) => (
-            <Link className="font-medium text-text-primary hover:text-brand-cyan" href={`/projetos/${item.id}`}>
+            <Link className="font-medium text-ink-primary transition-colors hover:text-accent" href={`/projetos/${item.id}`}>
               {item.nome}
             </Link>
           )

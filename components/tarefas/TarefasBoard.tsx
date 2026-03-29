@@ -78,7 +78,7 @@ export function TarefasBoard({
             header: "Titulo",
             render: (item) => (
               <button
-                className="text-left font-medium text-text-primary hover:text-brand-cyan"
+                className="text-left font-medium text-ink-primary transition-colors hover:text-accent"
                 onClick={() => setSelectedTaskId(item.id)}
                 type="button"
               >
@@ -117,6 +117,7 @@ export function TarefasBoard({
             render: (item) => (
               <input
                 checked={item.concluida}
+                className="h-4 w-4 rounded border-border bg-bg-surface2 text-accent focus:border-border-focus focus:ring-0"
                 disabled={isPending}
                 onChange={() => handleToggle(item)}
                 type="checkbox"

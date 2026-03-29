@@ -66,7 +66,7 @@ export function KpiGrid() {
         {Array.from({ length: 4 }).map((_, index) => (
           <div
             key={index}
-            className="h-[166px] animate-pulse rounded-xl border border-border bg-white/5"
+            className="h-[166px] animate-pulse rounded-card border border-border bg-bg-surface"
           />
         ))}
       </div>

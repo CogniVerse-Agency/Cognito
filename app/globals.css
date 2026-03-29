@@ -1,72 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --bg-primary: #080810;
-  --bg-surface: #0e0e1a;
-  --bg-surface2: #13131f;
+  --font-heading: "Syne", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+
+  --bg-primary: #0c0c0a;
+  --bg-surface: #141412;
+  --bg-surface2: #1c1c19;
+
+  --accent: #c8ff3e;
+  --accent-dim: #9fc832;
+  --accent-muted: rgba(200, 255, 62, 0.08);
+  --accent-border: rgba(200, 255, 62, 0.2);
+
+  --ink-primary: #f9f8f4;
+  --ink-secondary: #a09f98;
+  --ink-tertiary: #5c5c58;
+
   --border: rgba(255, 255, 255, 0.07);
-  --purple: #8b5cf6;
-  --purple-light: #a78bfa;
-  --magenta: #d946ef;
-  --cyan: #06b6d4;
-  --text-primary: #f0f0f8;
-  --text-muted: #7070a0;
-  --success: #22c55e;
-  --warning: #f59e0b;
-  --danger: #ef4444;
+  --border-hover: rgba(255, 255, 255, 0.15);
+  --border-focus: rgba(200, 255, 62, 0.4);
+
+  --status-success: #00d4a0;
+  --status-error: #ff5a3c;
+  --status-warning: #f5a623;
+  --status-info: #3b8bff;
+
+  /* Alias temporario para as classes antigas ainda compilarem. */
+  --purple: var(--accent);
+  --purple-light: #e3ff8e;
+  --magenta: var(--accent);
+  --cyan: var(--accent);
+  --text-primary: var(--ink-primary);
+  --text-muted: var(--ink-secondary);
+  --success: var(--status-success);
+  --warning: var(--status-warning);
+  --danger: var(--status-error);
 }
 
-* {
-  border-color: var(--border);
-}
+@layer base {
+  * {
+    border-color: var(--border);
+  }
 
-html {
-  scroll-behavior: smooth;
-}
+  html {
+    scroll-behavior: smooth;
+  }
 
-body {
-  min-height: 100vh;
-  background:
-    radial-gradient(circle at top, rgba(139, 92, 246, 0.12), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(6, 182, 212, 0.08), transparent 28%),
-    var(--bg-primary);
-  color: var(--text-primary);
-}
+  body {
+    @apply bg-bg-primary text-ink-primary font-body;
+    font-size: 16px;
+    line-height: 1.65;
+    min-height: 100vh;
+  }
 
-a,
-button,
-input,
-select,
-textarea {
-  transition:
-    transform 180ms ease,
-    box-shadow 180ms ease,
-    border-color 180ms ease,
-    background-color 180ms ease;
-}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+  }
 
-button:hover,
-a:hover {
-  transform: translateY(-1px);
-}
+  input,
+  select,
+  textarea {
+    @apply bg-bg-surface border border-border text-ink-primary rounded-input;
+    @apply focus:border-border-focus focus:bg-bg-surface2 outline-none;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    padding: 0.75rem 1rem;
+    transition:
+      border-color 0.2s,
+      background 0.2s;
+  }
 
-::selection {
-  background: rgba(139, 92, 246, 0.35);
-  color: var(--text-primary);
+  input::placeholder,
+  textarea::placeholder {
+    @apply text-ink-tertiary;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  ::selection {
+    background: rgba(200, 255, 62, 0.22);
+    color: var(--ink-primary);
+  }
 }
 
 @layer components {
   .card-surface {
-    @apply rounded-xl border border-border bg-white/5 backdrop-blur-sm;
+    @apply rounded-card border border-border bg-bg-surface;
+    transition:
+      border-color 0.2s,
+      background-color 0.2s;
+  }
+
+  .card-surface:hover {
+    @apply border-accent-border;
+    background: rgba(200, 255, 62, 0.03);
   }
 
   .input-base {
-    @apply w-full rounded-xl border border-border bg-bg-surface2 px-4 py-3 text-sm text-text-primary outline-none placeholder:text-text-muted focus:border-brand-purple focus:shadow-glow;
+    @apply w-full rounded-input border border-border bg-bg-surface px-4 py-3 text-sm text-ink-primary;
+    @apply outline-none placeholder:text-ink-tertiary focus:border-border-focus focus:bg-bg-surface2;
   }
 
   .primary-button {
-    @apply inline-flex items-center justify-center rounded-xl bg-brand-gradient px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-fuchsia-950/20 hover:shadow-glow disabled:cursor-not-allowed disabled:opacity-60;
+    @apply inline-flex items-center justify-center gap-2 rounded-pill bg-accent px-6 py-2.5;
+    @apply font-heading text-sm font-bold tracking-wide text-bg-primary;
+    transition:
+      opacity 0.2s,
+      transform 0.2s,
+      border-color 0.2s,
+      background-color 0.2s;
+  }
+
+  .primary-button:hover {
+    background: #9fc832;
+  }
+
+  .primary-button:active {
+    transform: scale(0.98);
   }
 }

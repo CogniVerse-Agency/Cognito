@@ -22,14 +22,14 @@ export function ProjetosRecentes({ projetos }: ProjetosRecentesProps) {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-xl font-semibold text-text-primary">
+          <h2 className="font-heading text-xl font-bold tracking-tight text-ink-primary">
             Projetos Recentes
           </h2>
-          <p className="text-sm text-text-muted">
+          <p className="text-sm text-ink-secondary">
             Os 5 projetos mais recentes cadastrados no ERP.
           </p>
         </div>
-        <Link className="text-sm font-medium text-brand-cyan" href="/projetos">
+        <Link className="text-sm font-medium text-accent transition-colors hover:text-accent-dim" href="/projetos">
           Ver todos -&gt;
         </Link>
       </div>
@@ -52,13 +52,13 @@ export function ProjetosRecentes({ projetos }: ProjetosRecentesProps) {
             header: "Progresso",
             render: (item) => (
               <div className="min-w-[140px] space-y-2">
-                <div className="h-2 overflow-hidden rounded-full bg-white/10">
+                <div className="h-2 overflow-hidden rounded-pill bg-bg-surface2">
                   <div
-                    className="h-full rounded-full bg-brand-gradient"
+                    className="h-full rounded-pill bg-accent"
                     style={{ width: `${item.progresso}%` }}
                   />
                 </div>
-                <span className="text-xs text-text-muted">{item.progresso}%</span>
+                <span className="text-xs text-ink-secondary">{item.progresso}%</span>
               </div>
             )
           },

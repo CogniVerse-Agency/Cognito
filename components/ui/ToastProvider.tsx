@@ -45,10 +45,10 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
           <div
             key={toast.id}
             className={cn(
-              "pointer-events-auto flex items-start gap-3 rounded-xl border px-4 py-3 shadow-2xl backdrop-blur-xl",
+              "pointer-events-auto flex items-start gap-3 rounded-card border px-4 py-3 shadow-2xl backdrop-blur-xl",
               toast.tone === "success"
-                ? "border-green-500/20 bg-green-500/10 text-green-100"
-                : "border-red-500/20 bg-red-500/10 text-red-100"
+                ? "border-status-success/20 bg-bg-surface text-status-success"
+                : "border-status-error/20 bg-bg-surface text-status-error"
             )}
           >
             {toast.tone === "success" ? (

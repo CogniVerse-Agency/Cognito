@@ -20,7 +20,7 @@ export function DashboardShell({ children }: DashboardShellProps) {
   }, [mobileOpen]);
 
   return (
-    <div className="min-h-screen bg-bg-primary text-text-primary">
+    <div className="min-h-screen bg-bg-primary text-ink-primary">
       <Sidebar mobileOpen={mobileOpen} onOpenChange={setMobileOpen} />
       <div className="min-h-screen lg:pl-60">
         <Header mobileOpen={mobileOpen} onOpenChange={setMobileOpen} />

@@ -16,7 +16,7 @@ export function ContratoTable({ contratos }: { contratos: ContratoListItem[] }) 
           key: "titulo",
           header: "Titulo",
           render: (item) => (
-            <Link className="font-medium text-text-primary hover:text-brand-cyan" href={`/contratos/${item.id}`}>
+            <Link className="font-medium text-ink-primary transition-colors hover:text-accent" href={`/contratos/${item.id}`}>
               {item.titulo}
             </Link>
           )

@@ -8,13 +8,13 @@ interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
 
 export function Select({ className, label, icon, children, ...props }: SelectProps) {
   return (
-    <label className="block space-y-2">
+    <label className="block space-y-1.5">
       {label ? (
-        <span className="text-sm font-medium text-text-primary">{label}</span>
+        <span className="text-sm font-medium text-ink-primary">{label}</span>
       ) : null}
       <div className="relative">
         {icon ? (
-          <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-text-muted">
+          <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-ink-tertiary">
             {icon}
           </span>
         ) : null}

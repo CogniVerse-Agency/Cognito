@@ -124,7 +124,7 @@ export function ContratoForm({
         <div className="grid gap-4 md:grid-cols-2">
           <div className="space-y-2">
             <Input defaultValue={contrato?.titulo ?? ""} label="Titulo*" name="titulo" placeholder="Nome do contrato" />
-            {errors.titulo ? <p className="text-sm text-red-300">{errors.titulo}</p> : null}
+            {errors.titulo ? <p className="text-xs text-status-error">{errors.titulo}</p> : null}
           </div>
 
           <div className="space-y-2">
@@ -136,7 +136,7 @@ export function ContratoForm({
                 </option>
               ))}
             </Select>
-            {errors.clienteId ? <p className="text-sm text-red-300">{errors.clienteId}</p> : null}
+            {errors.clienteId ? <p className="text-xs text-status-error">{errors.clienteId}</p> : null}
           </div>
 
           <Select defaultValue={contrato?.tipo ?? "HIGH_TOUCH"} label="Tipo*" name="tipo">
@@ -148,11 +148,12 @@ export function ContratoForm({
 
           <div className="space-y-2">
             <Input defaultValue={contrato?.valor ?? ""} label="Valor*" min="0" name="valor" placeholder="0.00" step="0.01" type="number" />
-            {errors.valor ? <p className="text-sm text-red-300">{errors.valor}</p> : null}
+            {errors.valor ? <p className="text-xs text-status-error">{errors.valor}</p> : null}
           </div>
 
-          <label className="flex items-center gap-3 rounded-xl border border-border bg-bg-surface2 px-4 py-3 text-sm text-text-primary">
+          <label className="flex items-center gap-3 rounded-input border border-border bg-bg-surface2 px-4 py-3 text-sm text-ink-primary">
             <input
+              className="h-4 w-4 rounded border-border bg-bg-surface2 text-accent focus:border-border-focus focus:ring-0"
               defaultChecked={contrato?.recorrente ?? false}
               name="recorrente"
               onChange={(event) => setRecorrente(event.target.checked)}
@@ -173,7 +174,7 @@ export function ContratoForm({
               <option value="trimestral">Trimestral</option>
               <option value="anual">Anual</option>
             </Select>
-            {errors.periodicidade ? <p className="text-sm text-red-300">{errors.periodicidade}</p> : null}
+            {errors.periodicidade ? <p className="text-xs text-status-error">{errors.periodicidade}</p> : null}
           </div>
 
           <Input defaultValue={toDateInputValue(contrato?.dataInicio)} label="Data de Inicio*" name="dataInicio" type="date" />
@@ -189,8 +190,8 @@ export function ContratoForm({
           </Select>
         </div>
 
-        <label className="block space-y-2">
-          <span className="text-sm font-medium text-text-primary">Descricao</span>
+        <label className="block space-y-1.5">
+          <span className="text-sm font-medium text-ink-primary">Descricao</span>
           <textarea
             className="input-base min-h-[140px] resize-y"
             defaultValue={contrato?.descricao ?? ""}

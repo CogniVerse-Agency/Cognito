@@ -28,24 +28,24 @@ export default async function ContratoDetalhePage({
       <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
         <div className="space-y-3">
           <div className="flex flex-wrap items-center gap-3">
-            <h1 className="text-3xl font-semibold text-text-primary">{contrato.titulo}</h1>
+            <h1 className="font-heading text-3xl font-bold tracking-tight text-ink-primary">{contrato.titulo}</h1>
             <Badge label={contrato.status} />
           </div>
-          <p className="text-sm text-text-muted">
+          <p className="text-sm text-ink-secondary">
             {contrato.cliente.empresa ?? contrato.cliente.nome}
           </p>
         </div>
 
         {editing ? (
           <Link
-            className="inline-flex items-center justify-center rounded-xl border border-border bg-white/5 px-4 py-2.5 text-sm font-semibold text-text-primary hover:bg-white/10"
+            className="inline-flex items-center justify-center rounded-pill border border-border bg-transparent px-6 py-2.5 font-heading text-sm font-semibold text-ink-secondary transition-all duration-200 hover:border-border-hover hover:text-ink-primary"
             href={`/contratos/${contrato.id}`}
           >
             Cancelar Edicao
           </Link>
         ) : (
           <Link
-            className="inline-flex items-center justify-center rounded-xl border border-border bg-white/5 px-4 py-2.5 text-sm font-semibold text-text-primary hover:bg-white/10"
+            className="inline-flex items-center justify-center rounded-pill border border-border bg-transparent px-6 py-2.5 font-heading text-sm font-semibold text-ink-secondary transition-all duration-200 hover:border-border-hover hover:text-ink-primary"
             href={`/contratos/${contrato.id}?edit=1`}
           >
             Editar

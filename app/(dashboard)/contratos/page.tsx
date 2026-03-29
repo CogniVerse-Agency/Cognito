@@ -16,8 +16,8 @@ export default async function ContratosPage({
     <div className="space-y-6">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-3xl font-semibold text-text-primary">Contratos</h1>
-          <p className="mt-2 text-sm text-text-muted">
+          <h1 className="font-heading text-3xl font-bold tracking-tight text-ink-primary">Contratos</h1>
+          <p className="mt-2 text-sm text-ink-secondary">
             Acompanhe status, tipo de servico e vigencia dos contratos ativos.
           </p>
         </div>
