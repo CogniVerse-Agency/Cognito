@@ -61,7 +61,7 @@ Observacoes:
 
 - URL local: `http://localhost:3000`
 - Email: `admin@cogniverse.com`
-- Senha: `CogniVerse@2026`
+- Senha: `JGfferdCv232d@`
 
 ## Deploy com Supabase + Vercel
 
