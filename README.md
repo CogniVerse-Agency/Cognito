@@ -57,12 +57,6 @@ Observacoes:
 - `DIRECT_URL` deve apontar para a conexao direta do banco no Supabase, usada pelo Prisma em migrations.
 - Em producao na Vercel, ajuste `NEXTAUTH_URL` para o dominio final do app.
 
-## Seed inicial
-
-- URL local: `http://localhost:3000`
-- Email: `admin@cogniverse.com`
-- Senha: `JGfferdCv232d@`
-
 ## Deploy com Supabase + Vercel
 
 1. Criar o projeto Postgres no Supabase.
